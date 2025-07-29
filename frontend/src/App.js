@@ -27,7 +27,7 @@ function App() {
     setRunResult(null);
 
     try {
-      const response = await axios.post('http://localhost:3001/api/actors', { token: apiKey });
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/actors`, { token: apiKey });
       setActors(response.data);
     } catch (err) {
       const errorMessage = err.response?.data?.error || 'An unexpected error occurred.';
@@ -46,7 +46,7 @@ function App() {
     setRunResult(null);
 
     try {
-      const response = await axios.post('http://localhost:3001/api/get-schema', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/get-schema`, {
         token: apiKey,
         actorId: actor.id,
       });
@@ -83,7 +83,7 @@ function App() {
     setRunResult(null);
 
     try {
-      const response = await axios.post('http://localhost:3001/api/run-actor', {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/run-actor`, {
         token: apiKey,
         actorId: selectedActor.id,
         inputData: inputData,
